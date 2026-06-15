@@ -277,7 +277,16 @@ async function renderTab() {
   else if (currentTab==='calendario') await renderCalendario(content, pf);
 }
 
-function openNew() { editItem=null; openModal(currentTab==='pacientes'?'paciente':{notas:'nota',asistencias:'asistencia',conductas:'conducta',informes:'informe',gastos:'gasto',calendario:'evento'}[currentTab]); }
+function openNew() {
+  editItem = null;
+  if (currentTab === 'calendario' && calDiaSeleccionado) {
+    const mm = String(calMonth+1).padStart(2,'0');
+    const dd = String(calDiaSeleccionado).padStart(2,'0');
+    editItem = { _prefill: true, fecha: `${calYear}-${mm}-${dd}` };
+  }
+  openModal(currentTab==='pacientes'?'paciente':{notas:'nota',asistencias:'asistencia',conductas:'conducta',informes:'informe',gastos:'gasto',calendario:'evento'}[currentTab]);
+  if (editItem?._prefill) editItem = null;
+}
 function openEdit(tipo, item) { editItem=item; openModal(tipo); }
 async function doDelete(table, id) { if(!confirm('¿Eliminar este registro?')) return; await dbDelete(table,id); renderTab(); }
 
@@ -391,18 +400,81 @@ async function renderGastos(el, pf) {
     </div>`).join(''):'<div class="empty">Sin gastos registrados</div>'}`;
 }
 
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+let calEventos = [];
+let calDiaSeleccionado = null;
+
 async function renderCalendario(el, pf) {
-  let data = await dbGet('eventos');
-  if (pf) data = data.filter(x=>x.paciente_id===pf||!x.paciente_id);
-  data = data.filter(x=>x.fecha).sort((a,b)=>a.fecha.localeCompare(b.fecha));
-  if (!data.length) { el.innerHTML='<div class="empty">Sin eventos programados</div>'; return; }
-  el.innerHTML = data.map(ev=>{
-    const [,m,d] = ev.fecha.split('-');
-    return `
+  calEventos = await dbGet('eventos');
+  if (pf) calEventos = calEventos.filter(x => x.paciente_id === pf || !x.paciente_id);
+  renderCalendarioUI(el);
+}
+
+function renderCalendarioUI(el) {
+  const hoy = new Date();
+  const primerDia = new Date(calYear, calMonth, 1).getDay();
+  const diasEnMes = new Date(calYear, calMonth + 1, 0).getDate();
+  const offset = primerDia === 0 ? 6 : primerDia - 1;
+
+  // Eventos por día
+  const eventosPorDia = {};
+  calEventos.forEach(ev => {
+    if (!ev.fecha) return;
+    const [y, m, d] = ev.fecha.split('-');
+    if (parseInt(y) === calYear && parseInt(m) - 1 === calMonth) {
+      const dia = parseInt(d);
+      if (!eventosPorDia[dia]) eventosPorDia[dia] = [];
+      eventosPorDia[dia].push(ev);
+    }
+  });
+
+  // Eventos del día seleccionado
+  const evsDia = calDiaSeleccionado ? (eventosPorDia[calDiaSeleccionado] || []) : [];
+  const fechaStr = calDiaSeleccionado ? `${String(calDiaSeleccionado).padStart(2,'0')}/${String(calMonth+1).padStart(2,'0')}/${calYear}` : '';
+
+  let celdas = '';
+  for (let i = 0; i < offset; i++) celdas += `<div></div>`;
+  for (let d = 1; d <= diasEnMes; d++) {
+    const esHoy = d === hoy.getDate() && calMonth === hoy.getMonth() && calYear === hoy.getFullYear();
+    const esSel = d === calDiaSeleccionado;
+    const evs = eventosPorDia[d] || [];
+    const puntos = evs.slice(0,3).map(ev => {
+      const color = ev.tipo==='sesion'?'#c9a84c':ev.tipo==='reunion'?'#4a90d9':'#aaa';
+      return `<div style="width:5px;height:5px;border-radius:50%;background:${color};flex-shrink:0"></div>`;
+    }).join('');
+    celdas += `
+      <div onclick="selDia(${d})" style="cursor:pointer;border-radius:8px;padding:6px 4px;text-align:center;background:${esSel?'var(--navy)':esHoy?'var(--gold-light)':'transparent'};border:${esHoy&&!esSel?'1px solid var(--gold)':'1px solid transparent'};transition:background 0.1s">
+        <p style="font-size:13px;font-weight:${esHoy||esSel?'600':'400'};color:${esSel?'white':esHoy?'var(--navy)':'var(--navy)'};line-height:1;margin-bottom:4px">${d}</p>
+        <div style="display:flex;justify-content:center;gap:2px;min-height:6px">${puntos}</div>
+      </div>`;
+  }
+
+  el.innerHTML = `
+    <div class="card" style="padding:1.25rem;margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <button onclick="cambiarMes(-1)" class="btn-ghost" style="padding:5px 12px;font-size:16px">‹</button>
+        <p class="pf" style="font-size:16px;font-weight:500;color:var(--navy)">${MESES[calMonth]} ${calYear}</p>
+        <button onclick="cambiarMes(1)" class="btn-ghost" style="padding:5px 12px;font-size:16px">›</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px">
+        ${['Lu','Ma','Mi','Ju','Vi','Sa','Do'].map(d=>`<div style="text-align:center;font-size:11px;font-weight:500;color:#aaa;padding:4px 0">${d}</div>`).join('')}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
+        ${celdas}
+      </div>
+    </div>
+
+    ${calDiaSeleccionado ? `
+    <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
+      <div><div class="gold-line"></div><p class="pf" style="font-size:15px;color:var(--navy)">${fechaStr}</p></div>
+      ${currentRole!=='familia'?`<button class="btn-primary" onclick="openNew()" style="font-size:12px;padding:6px 12px">+ Agregar</button>`:''}
+    </div>
+    ${evsDia.length ? evsDia.map(ev=>`
     <div class="card" style="padding:10px 14px;display:flex;align-items:center;gap:14px;margin-bottom:8px">
       <div style="width:46px;height:46px;border-radius:9px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
-        <p class="pf" style="font-size:16px;font-weight:500;color:var(--gold);line-height:1">${d}</p>
-        <p style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:300">${MESES[parseInt(m)-1]}</p>
+        <p class="pf" style="font-size:16px;font-weight:500;color:var(--gold);line-height:1">${String(calDiaSeleccionado).padStart(2,'0')}</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:300">${MESES[calMonth]}</p>
       </div>
       <div style="flex:1">
         <p style="font-weight:500;font-size:14px;color:var(--navy)">${ev.titulo||''}</p>
@@ -410,7 +482,21 @@ async function renderCalendario(el, pf) {
       </div>
       <span class="pill ${ev.tipo==='sesion'?'pill-gold':ev.tipo==='reunion'?'pill-blue':'pill-gray'}">${ev.tipo||''}</span>
       ${currentRole==='admin'?`<div style="display:flex;gap:2px"><button class="btn-icon" onclick='openEdit("evento",${JSON.stringify(ev)})'>✏️</button><button class="btn-icon del" onclick="doDelete('eventos','${ev.id}')">🗑</button></div>`:''}
-    </div>`}).join('');
+    </div>`).join('') : `<div class="empty" style="padding:1.5rem">Sin eventos este día</div>`}
+    ` : `<div class="empty">Hacé clic en un día para ver sus eventos</div>`}`;
+}
+
+function selDia(d) {
+  calDiaSeleccionado = calDiaSeleccionado === d ? null : d;
+  renderCalendarioUI(document.getElementById('content'));
+}
+
+function cambiarMes(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  calDiaSeleccionado = null;
+  renderCalendarioUI(document.getElementById('content'));
 }
 
 function f(key, placeholder='', type='text', opts=null) {
