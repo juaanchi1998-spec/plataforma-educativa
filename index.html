@@ -439,7 +439,7 @@ async function doLogin() {
   currentUser = { admin:'Administrador', equipo:'Equipo Externo', familia:'Familia/Tutor' }[role];
   currentPacId = role==='familia' ? document.getElementById('login-pac-select').value : null;
   document.getElementById('login-screen').style.display='none';
-  document.getElementById('app').style.display='flex';
+  document.getElementById('app').style.display='';
   await initApp();
 }
 document.getElementById('login-pw').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
