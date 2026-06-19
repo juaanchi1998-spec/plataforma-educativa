@@ -7,12 +7,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#faf8f4;color:#1e3a5f;min-height:100vh;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
 .pf{font-family:'Playfair Display',Georgia,serif}
 :root{
   --navy:#1e3a5f;--navy2:#2c4a7c;--gold:#c9a84c;--gold-light:#f5edda;--cream:#faf8f4;
   --sage:#7a9b76;--sage-light:#e6efe2;--warm:#e3b58c;--blush:#f3e3da;
 }
+body[data-theme="salvia"]{
+  --navy:#2f5944;--navy2:#3d6b54;--gold:#cf9a5e;--gold-light:#f3e6d3;--cream:#f7f5ef;
+  --sage:#6f9b6a;--sage-light:#e4efe0;--warm:#e0a878;--blush:#f1e2d4;
+}
+body[data-theme="lavanda"]{
+  --navy:#4a3f78;--navy2:#5b4b8a;--gold:#b06a8f;--gold-light:#efe2ec;--cream:#f8f6fb;
+  --sage:#8a86b0;--sage-light:#e8e6f2;--warm:#d6a0b8;--blush:#f1e4ee;
+}
+body[data-theme="oceano"]{
+  --navy:#14515a;--navy2:#1d6a73;--gold:#e0805f;--gold-light:#fbe4da;--cream:#f3f8f7;
+  --sage:#5fa39a;--sage-light:#def0ec;--warm:#e8a07f;--blush:#fbe0d6;
+}
+.theme-dots{display:flex;gap:9px;align-items:center}
+.theme-dot{width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;padding:0;transition:transform .15s,box-shadow .15s;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.theme-dot:hover{transform:scale(1.18)}
+.theme-dot.active{box-shadow:0 0 0 2px var(--navy)}
 input,select,textarea{font-family:'Inter',sans-serif;font-size:13px;color:var(--navy);border:1px solid rgba(30,58,95,0.16);border-radius:9px;padding:10px 13px;width:100%;outline:none;background:white;transition:border-color .18s,box-shadow .18s}
 input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12)}
 textarea{resize:vertical}
@@ -176,6 +192,10 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
       <div id="login-err" style="color:#9b2c2c;font-size:12px;margin-bottom:10px;display:none"></div>
       <button class="btn-primary" onclick="doLogin()" style="width:100%;justify-content:center;padding:12px;font-size:14px">Ingresar</button>
       <p style="font-size:11px;color:#bbb;margin-top:13px;text-align:center">Contraseñas: admin123 · equipo123 · fam123</p>
+      <div style="margin-top:16px;text-align:center">
+        <p style="font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;font-weight:500;margin-bottom:9px">Tema</p>
+        <div class="theme-dots" id="login-themes" style="justify-content:center"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -207,6 +227,10 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
     </div>
     <nav id="sidebar-nav" style="flex:1;padding-top:4px"></nav>
     <div style="padding:0.85rem 1rem;border-top:1px solid rgba(30,58,95,0.07)">
+      <div style="margin-bottom:13px">
+        <p style="font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:8px">Tema</p>
+        <div class="theme-dots" id="sidebar-themes" style="justify-content:flex-start"></div>
+      </div>
       <div id="user-info" style="display:flex;align-items:center;gap:9px;margin-bottom:9px"></div>
       <button class="btn-ghost" onclick="doLogout()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:6px">← Salir</button>
     </div>
@@ -345,6 +369,31 @@ async function dbDelete(table, id) {
 
 // set logos
 document.querySelectorAll('.logo-box').forEach(b=>b.innerHTML=LOGO_SVG);
+
+// ---- Temas ----
+const THEMES = {
+  clasico: { label:'Clásico', a:'#1e3a5f', b:'#c9a84c' },
+  salvia:  { label:'Salvia',  a:'#2f5944', b:'#cf9a5e' },
+  lavanda: { label:'Lavanda', a:'#4a3f78', b:'#b06a8f' },
+  oceano:  { label:'Océano',  a:'#14515a', b:'#e0805f' }
+};
+function saveTheme(t){ try{ localStorage.setItem('at_theme', t); }catch(e){} }
+function loadTheme(){ try{ return localStorage.getItem('at_theme'); }catch(e){ return null; } }
+function applyTheme(t){
+  if(!THEMES[t]) t='clasico';
+  document.body.dataset.theme = t;
+  saveTheme(t);
+  document.querySelectorAll('.theme-dot').forEach(d=>d.classList.toggle('active', d.dataset.theme===t));
+}
+function renderThemeDots(container){
+  if(!container) return;
+  container.innerHTML = Object.entries(THEMES).map(([k,v])=>`
+    <button class="theme-dot" data-theme="${k}" title="${v.label}" onclick="applyTheme('${k}')"
+      style="background:linear-gradient(135deg, ${v.a} 0%, ${v.a} 50%, ${v.b} 50%, ${v.b} 100%)"></button>`).join('');
+}
+renderThemeDots(document.getElementById('login-themes'));
+renderThemeDots(document.getElementById('sidebar-themes'));
+applyTheme(loadTheme() || 'clasico');
 
 document.getElementById('login-user').addEventListener('change', function() {
   document.getElementById('pac-select-wrap').style.display = this.value==='familia' ? 'block' : 'none';
