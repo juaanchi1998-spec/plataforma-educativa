@@ -111,13 +111,23 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
 .login-card{animation:scaleIn .5s cubic-bezier(.2,.9,.3,1.05) both}
 .login-hero{animation:pop .7s cubic-bezier(.2,.9,.3,1.2) both}
 @media(max-width:640px){
-  #sidebar{transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.15)}
+  #sidebar{transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.15);width:84vw;max-width:300px}
   #sidebar.open{transform:translateX(0)}
-  #main{margin-left:0;padding:1rem}
+  #main{margin-left:0;padding:0.9rem}
   #mobile-header{display:flex}
   .grid2{grid-template-columns:1fr}
-  .modal{width:95vw;padding:1.35rem}
-  .metrics-grid{grid-template-columns:1fr 1fr!important}
+  .modal{width:94vw;padding:1.3rem;margin-bottom:24px}
+  .overlay{padding-top:18px}
+  #tab-title{font-size:19px!important}
+  #add-btn{padding:9px 13px!important;font-size:12px!important}
+  .demo-banner{font-size:11px}
+  .metrics-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+  .metric{padding:11px 9px!important}
+  .metric::after{display:none}
+  .metric .pf{font-size:18px!important}
+  #content .card{flex-wrap:wrap;padding:12px 13px!important;gap:11px!important}
+  #content .card>div[style*="text-align:right;flex-shrink:0"]{text-align:left!important;flex-basis:100%;order:5;border-top:1px solid rgba(0,0,0,.06);padding-top:9px}
+  #content .card>div[style*="display:flex;gap:2px"]{margin-left:auto}
 }
 #mobile-header{display:none;align-items:center;justify-content:space-between;padding:13px 16px;background:white;border-bottom:1px solid rgba(30,58,95,0.08);position:sticky;top:0;z-index:9}
 #overlay-close{display:none;position:fixed;inset:0;z-index:9;background:rgba(0,0,0,0.25)}
@@ -132,7 +142,7 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
   <div class="blob float-soft2" style="width:220px;height:220px;background:var(--sage-light);bottom:-50px;right:-30px"></div>
   <div class="blob float-soft" style="width:150px;height:150px;background:var(--blush);top:40%;right:12%;opacity:.4"></div>
 
-  <div style="width:400px;padding:1rem;position:relative;z-index:1">
+  <div style="width:100%;max-width:400px;padding:1rem;position:relative;z-index:1">
     <div style="text-align:center;margin-bottom:2rem">
       <div class="login-hero" style="width:150px;height:150px;margin:0 auto 18px">
         <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
