@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Plataforma Educativa · A.T. Priscila Ibazeta</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
 .pf{font-family:'Playfair Display',Georgia,serif}
 :root{
   --navy:#1e3a5f;--navy2:#2c4a7c;--gold:#c9a84c;--gold-light:#f5edda;--cream:#faf8f4;
@@ -110,8 +111,16 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
 @keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
 .login-card{animation:scaleIn .5s cubic-bezier(.2,.9,.3,1.05) both}
 .login-hero{animation:pop .7s cubic-bezier(.2,.9,.3,1.2) both}
+#app{display:flex;min-height:100vh}
+#sidebar{width:222px;background:white;border-right:1px solid rgba(30,58,95,0.08);display:flex;flex-direction:column;flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:10;transition:transform 0.25s cubic-bezier(.2,.8,.2,1)}
+#main{flex:1;padding:1.85rem;margin-left:222px;min-width:0;position:relative}
 @media(max-width:640px){
   #app{display:block}
+  /* iOS hace zoom al enfocar un campo con letra < 16px: lo evitamos forzando 16px */
+  input,select,textarea{font-size:16px!important}
+  #pac-filtro{font-size:16px!important;padding:10px 12px!important}
+  .btn-icon{padding:8px}
+  .btn-icon svg{width:18px;height:18px}
   #sidebar{transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.15);width:84vw;max-width:300px}
   #sidebar.open{transform:translateX(0)}
   #main{margin-left:0;padding:0.9rem}
