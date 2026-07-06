@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <meta name="apple-mobile-web-app-title" content="Plataforma A.T."/>
-<meta name="theme-color" content="#F8F6FB"/>
+<meta name="theme-color" content="#F4F6F1"/>
 <title>Plataforma Educativa · A.T. Priscila Ibazeta</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%231e3a5f'/><g fill='none' stroke='%23faf8f4' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5.5 14.8a6.5 6 0 0 0 13 0'/><path d='M12 15.5V7.6'/><path d='M12 12c0-2.7 1.9-4.6 4.7-4.8 .2 2.8-2 4.8-4.7 4.8z'/><path d='M12 13.4c0-2-1.5-3.5-3.7-3.7-.2 2.2 1.6 3.7 3.7 3.7z'/><circle cx='12' cy='6.3' r='1'/></g></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -16,35 +16,43 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+body{font-family:'Inter',sans-serif;background:
+    radial-gradient(900px 640px at 4% -12%, color-mix(in oklab,var(--sage) 18%,transparent), transparent 58%),
+    radial-gradient(820px 560px at 108% 2%, color-mix(in oklab,var(--accent) 12%,transparent), transparent 55%),
+    radial-gradient(760px 660px at 98% 114%, color-mix(in oklab,var(--sage) 12%,transparent), transparent 56%),
+    var(--cream);
+  background-attachment:fixed;color:var(--navy);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
 .pf{font-family:'Fustat','Inter',sans-serif}
 :root{
-  --navy:#2F2944;--navy2:#46356F;--gold:#B86B8B;--gold-light:#EEE9F7;--cream:#F8F6FB;
-  --sage:#4E8C8A;--sage-light:#E2EEED;--warm:#E7CBB9;--blush:#F3E9EE;
-  --muted:#6B6479;--faint:#938BA6;
-  --primary:#5B4A82;--primary-dark:#46356F;--primary-soft:#EEE9F7;--accent:#B86B8B;--teal:#4E8C8A;--surface:#FFFFFF;--surface-soft:#F2EEF7;
+  --navy:#25352E;--navy2:#33473D;--gold:#C2764F;--gold-light:#F3E5DA;--cream:#F4F6F1;
+  --sage:#5E9585;--sage-light:#E3EFEA;--warm:#E3B79A;--blush:#F1E6DD;
+  --muted:#576158;--faint:#6E7A70;
+  --primary:#2F6E5D;--primary-dark:#245646;--primary-soft:#E1EFE9;--accent:#C2764F;--teal:#5E9585;--surface:#FFFFFF;--surface-soft:#EDF2ED;
 }
 body[data-theme="salvia"]{
-  --navy:#26342D;--navy2:#2C4A3F;--gold:#A98B6B;--gold-light:#EFE8DD;--cream:#F6F6F1;
-  --sage:#5D9183;--sage-light:#E2EDE9;--warm:#DCC3AA;--blush:#EFE6DD;
-  --primary:#3D6B5A;--primary-dark:#2C4A3F;--primary-soft:#E3ECE8;--accent:#A98B6B;--teal:#5D9183;--surface-soft:#EEF1EC;
+  --navy:#22302A;--navy2:#2E4238;--gold:#B0895A;--gold-light:#EFE7D8;--cream:#F5F6F0;
+  --sage:#5A8C6E;--sage-light:#E4EDE4;--warm:#DBC3A6;--blush:#EEE6DB;
+  --muted:#535E54;--faint:#6C776B;
+  --primary:#3C6E52;--primary-dark:#2E5540;--primary-soft:#E2EDE5;--accent:#B0895A;--teal:#5A8C6E;--surface-soft:#EDF1EA;
 }
 body[data-theme="lavanda"]{
-  --navy:#2E2740;--navy2:#473873;--gold:#B06A8F;--gold-light:#EFE2EC;--cream:#F8F6FB;
+  --navy:#2E2740;--navy2:#473873;--gold:#B06A8F;--gold-light:#EFE2EC;--cream:#F7F5FB;
   --sage:#6E8BA8;--sage-light:#E7ECF2;--warm:#D6A0B8;--blush:#F1E4EE;
-  --primary:#5B4B8A;--primary-dark:#473873;--primary-soft:#EEE7F5;--accent:#B06A8F;--teal:#6E8BA8;--surface-soft:#F1EEF7;
+  --muted:#5B5470;--faint:#837B99;
+  --primary:#5B4B8A;--primary-dark:#473873;--primary-soft:#EAE4F3;--accent:#B06A8F;--teal:#6E8BA8;--surface-soft:#F0EDF6;
 }
 body[data-theme="oceano"]{
-  --navy:#1B3A40;--navy2:#143E44;--gold:#C77A63;--gold-light:#F4E2DB;--cream:#F3F8F7;
-  --sage:#4E9A91;--sage-light:#DEEFEB;--warm:#E0B49E;--blush:#F4E5DD;
-  --primary:#1D6A73;--primary-dark:#143E44;--primary-soft:#DDEEEC;--accent:#C77A63;--teal:#4E9A91;--surface-soft:#E9F1F0;
+  --navy:#173A3C;--navy2:#12484C;--gold:#C77A63;--gold-light:#F4E2DB;--cream:#F1F7F6;
+  --sage:#3E9A90;--sage-light:#DEEFEB;--warm:#E0B49E;--blush:#F4E5DD;
+  --muted:#4E605E;--faint:#6C7E7C;
+  --primary:#1D6E73;--primary-dark:#134E52;--primary-soft:#DDEEEC;--accent:#C77A63;--teal:#3E9A90;--surface-soft:#E7F1F0;
 }
 .theme-dots{display:flex;gap:9px;align-items:center}
 .theme-dot{width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;padding:0;transition:transform .15s,box-shadow .15s;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .theme-dot:hover{transform:scale(1.18)}
 .theme-dot.active{box-shadow:0 0 0 2px var(--navy)}
 input,select,textarea{font-family:'Inter',sans-serif;font-size:13px;color:var(--navy);border:1px solid rgba(47,41,68,0.16);border-radius:9px;padding:10px 13px;width:100%;outline:none;background:white;transition:border-color .18s,box-shadow .18s}
-input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,107,139,0.12)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 22%,transparent)}
 input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
 textarea{resize:vertical}
 button{font-family:'Inter',sans-serif;cursor:pointer}
@@ -60,7 +68,7 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:15px;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,border-color .2s}
 #content .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px -16px rgba(47,41,68,0.3);border-color:rgba(184,107,139,0.35)}
 .pill{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 11px;border-radius:99px;white-space:nowrap;letter-spacing:.01em}
-.pill-gold{background:#F4E4EC;color:#8A2F54}
+.pill-gold{background:#F3E7DF;color:#8A4B2A}
 .pill-green{background:#E1EFEB;color:#2C6B5C}
 .pill-red{background:#FBEAEA;color:#9B3B3B}
 .pill-amber{background:#FAF0DA;color:#8A5A1E}
@@ -128,6 +136,7 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
 #app{display:flex;min-height:100vh}
 #sidebar{width:222px;background:white;border-right:1px solid rgba(47,41,68,0.08);display:flex;flex-direction:column;flex-shrink:0;position:fixed;top:0;left:0;height:100vh;height:100dvh;overflow-y:auto;z-index:10;transition:transform 0.25s cubic-bezier(.2,.8,.2,1);padding-bottom:env(safe-area-inset-bottom)}
 #main{flex:1;padding:1.85rem;margin-left:222px;min-width:0;position:relative}
+#bottom-nav{display:none}
 @media(max-width:640px){
   #app{display:block}
   /* iOS hace zoom al enfocar un campo con letra < 16px: lo evitamos forzando 16px */
@@ -137,8 +146,14 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
   .btn-icon svg{width:18px;height:18px}
   #sidebar{transform:translateX(-100%);box-shadow:0 0 40px rgba(0,0,0,.15);width:84vw;max-width:300px}
   #sidebar.open{transform:translateX(0)}
-  #main{margin-left:0;padding:0.9rem;padding-bottom:calc(0.9rem + env(safe-area-inset-bottom))}
+  #main{margin-left:0;padding:0.9rem;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
   .grid2{grid-template-columns:1fr}
+  #bottom-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 22px -14px rgba(0,0,0,.35)}
+  #bottom-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 3px 7px;min-height:56px;color:var(--faint);font-family:'Inter',sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.005em;transition:color .15s}
+  #bottom-nav button svg{width:22px;height:22px}
+  #bottom-nav button.active{color:var(--primary)}
+  #bottom-nav button.active .nav-ico{color:var(--primary)}
+  #bottom-nav .nav-ico{color:var(--faint);display:inline-flex;transition:color .15s}
   .modal{width:94vw;padding:1.3rem;margin-bottom:24px}
   .overlay{padding-top:18px}
   #tab-title{font-size:19px!important}
@@ -156,6 +171,31 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
   #content .card[style*="padding:1rem 1.25rem"]{align-items:flex-start!important}
 }
 #mobile-header{display:none;align-items:center;justify-content:space-between;padding:13px 16px;background:white;border-bottom:1px solid rgba(47,41,68,0.08);position:sticky;top:0;z-index:9}
+@keyframes menuSweep{from{opacity:0;transform:translateX(-46px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:640px){
+  #sidebar{transition:transform .32s cubic-bezier(.16,.84,.44,1)}
+  #sidebar.open #pac-filtro-wrap,
+  #sidebar.open #sidebar-nav>*,
+  #sidebar.open #sidebar>div:last-child{animation:menuSweep .44s cubic-bezier(.16,.84,.44,1) both}
+  #sidebar.open #pac-filtro-wrap{animation-delay:.03s}
+  #sidebar.open #sidebar-nav>*:nth-child(1){animation-delay:.07s}
+  #sidebar.open #sidebar-nav>*:nth-child(2){animation-delay:.10s}
+  #sidebar.open #sidebar-nav>*:nth-child(3){animation-delay:.13s}
+  #sidebar.open #sidebar-nav>*:nth-child(4){animation-delay:.16s}
+  #sidebar.open #sidebar-nav>*:nth-child(5){animation-delay:.19s}
+  #sidebar.open #sidebar-nav>*:nth-child(6){animation-delay:.22s}
+  #sidebar.open #sidebar-nav>*:nth-child(7){animation-delay:.25s}
+  #sidebar.open #sidebar-nav>*:nth-child(8){animation-delay:.28s}
+  #sidebar.open #sidebar-nav>*:nth-child(9){animation-delay:.31s}
+  #sidebar.open #sidebar-nav>*:nth-child(10){animation-delay:.34s}
+  #sidebar.open #sidebar-nav>*:nth-child(n+11){animation-delay:.37s}
+  #sidebar.open #sidebar>div:last-child{animation-delay:.34s}
+}
+@media(max-width:640px) and (prefers-reduced-motion:reduce){
+  #sidebar.open #pac-filtro-wrap,
+  #sidebar.open #sidebar-nav>*,
+  #sidebar.open #sidebar>div:last-child{animation:none}
+}
 #overlay-close{display:none;position:fixed;inset:0;z-index:9;background:rgba(0,0,0,0.25)}
 .logo-box{background:linear-gradient(150deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(47,41,68,0.6)}
 .logo-box svg{width:60%;height:60%}
@@ -377,13 +417,14 @@ button{font-family:'Inter',sans-serif;cursor:pointer}
     <div id="print-header" style="display:none"></div>
     <div id="content"></div>
   </main>
+  <nav id="bottom-nav" aria-label="Navegación principal"></nav>
 </div>
 
 <div id="modal-overlay" class="overlay" style="display:none" onclick="handleOverlayClick(event)">
   <div class="modal" id="modal-box"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
 const SB_URL = 'https://tjqzsvottuqakkoenirb.supabase.co';
 const SB_KEY = 'sb_publishable_CdgDKMDM2jiRsEap4gOIWw_MsfHx9dp';
@@ -430,7 +471,7 @@ function emptyState(type, msg, sub=''){
   return '<div class="empty-wrap"><div class="empty-ill">'+illustration(type)+'</div><p class="empty-msg serif-tight">'+msg+'</p>'+(sub?'<p class="empty-sub">'+sub+'</p>':'')+'</div>';
 }
 
-let currentUser = null, currentRole = null, currentPacId = null, currentTab = 'pacientes', pacientes = [], editItem = null;
+let currentUser = null, currentRole = null, currentPacId = null, currentTab = 'pacientes', pacientes = [], editItem = null, detailPac = null;
 
 async function sbFetch(path, opts = {}) {
   try {
@@ -459,63 +500,85 @@ const dDate = d => `${_y}-${_m}-${String(d).padStart(2,'0')}`;
 function uid(){ return 'demo-'+Math.random().toString(36).slice(2,9); }
 const demoStore = {
   pacientes: [
-    {id:'p1', created_at:'1', nombre:'Tomás Herrera', edad:9, institucion:'Esc. Normal N° 12', diagnostico:'TEA — Nivel 1', contacto:'Mamá · 264 555-1010'},
+    {id:'p1', created_at:'1', nombre:'Tomás Herrera', edad:9, fecha_nacimiento:'2016-03-14', dni:'48.221.550', institucion:'Esc. Normal N° 12', grado:'4° grado', diagnostico:'TEA — Nivel 1', obra_social:'OSDE', nro_afiliado:'62-1120458-03', docente:'Prof. Laura Gómez', profesional_derivante:'Dra. Marina Sosa (neuróloga)', equipo:'Fonoaudiología · Psicología', medicacion:'—', frecuencia:'3 veces/semana', fecha_inicio:'2025-03-10', contacto:'Mamá · 264 555-1010', observaciones:'Responde muy bien a las anticipaciones visuales.'},
     {id:'p2', created_at:'2', nombre:'Valentina Ríos', edad:7, institucion:'Esc. Sarmiento', diagnostico:'TDAH', contacto:'Papá · 264 555-2020'},
     {id:'p3', created_at:'3', nombre:'Benjamín Díaz', edad:11, institucion:'Inst. San José', diagnostico:'Trastorno del lenguaje', contacto:'Tutora · 264 555-3030'}
   ],
   notas: [
-    {id:'n1', created_at:'1', paciente_id:'p1', fecha:dDate(4), materia:'Lengua', nota:8, obs:'Mejoró la lectura comprensiva'},
+    {id:'n1', created_at:'1', paciente_id:'p1', fecha:dDate(4), materia:'Lengua', nota:8, periodo:'2do trimestre', obs:'Mejoró la lectura comprensiva'},
     {id:'n2', created_at:'2', paciente_id:'p2', fecha:dDate(6), materia:'Matemática', nota:5, obs:'Le costó sostener la atención'},
     {id:'n3', created_at:'3', paciente_id:'p1', fecha:dDate(9), materia:'Ciencias', nota:9, obs:''}
   ],
   asistencias: [
-    {id:'a1', created_at:'1', paciente_id:'p1', fecha:dDate(2), estado:'presente'},
-    {id:'a2', created_at:'2', paciente_id:'p2', fecha:dDate(3), estado:'ausente'},
+    {id:'a1', created_at:'1', paciente_id:'p1', fecha:dDate(2), estado:'presente', ambito:'domicilio', horas:2},
+    {id:'a2', created_at:'2', paciente_id:'p2', fecha:dDate(3), estado:'ausente', ambito:'escuela', observacion:'Aviso de la familia: turno médico.'},
     {id:'a3', created_at:'3', paciente_id:'p1', fecha:dDate(5), estado:'presente'},
     {id:'a4', created_at:'4', paciente_id:'p3', fecha:dDate(5), estado:'justificado'}
   ],
   conductas: [
     {id:'c1', created_at:'1', paciente_id:'p1', fecha:dDate(5), tipo:'positivo', descripcion:'Compartió materiales con un compañero sin que se lo pidieran.'},
-    {id:'c2', created_at:'2', paciente_id:'p2', fecha:dDate(7), tipo:'negativo', descripcion:'Se frustró ante una consigna nueva y dejó la tarea.'},
+    {id:'c2', created_at:'2', paciente_id:'p2', fecha:dDate(7), tipo:'negativo', contexto:'Aula', intensidad:'moderada', antecedente:'Se le presentó una consigna nueva sin anticipación.', descripcion:'Se frustró, empujó los materiales y dejó la tarea.', intervencion:'Se la acompañó a un rincón de calma y se fraccionó la consigna en pasos.'},
     {id:'c3', created_at:'3', paciente_id:'p3', fecha:dDate(8), tipo:'neutro', descripcion:'Jornada tranquila, sin novedades para destacar.'}
   ],
   informes: [
-    {id:'i1', created_at:'1', paciente_id:'p1', fecha:dDate(1), categoria:'Informe trimestral', nombre:'Informe 1er trimestre — Tomás'},
+    {id:'i1', created_at:'1', paciente_id:'p1', fecha:dDate(1), categoria:'Informe trimestral', nombre:'Informe 1er trimestre — Tomás', autor:'Lic. Priscila Ibazeta', enlace:'https://drive.google.com/'},
     {id:'i2', created_at:'2', paciente_id:'p2', fecha:dDate(4), categoria:'Evaluación', nombre:'Evaluación inicial — Valentina'}
   ],
   gastos: [
-    {id:'g1', created_at:'1', paciente_id:'p1', fecha:dDate(2), concepto:'Sesión semanal', monto:18000, tipo:'honorario'},
-    {id:'g2', created_at:'2', paciente_id:'p2', fecha:dDate(6), concepto:'Material didáctico', monto:6500, tipo:'material'},
+    {id:'g1', created_at:'1', paciente_id:'p1', fecha:dDate(2), concepto:'Sesión semanal', monto:18000, tipo:'honorario', estado_pago:'pagado', medio:'Transferencia'},
+    {id:'g2', created_at:'2', paciente_id:'p2', fecha:dDate(6), concepto:'Material didáctico', monto:6500, tipo:'material', estado_pago:'pendiente', medio:'Efectivo'},
     {id:'g3', created_at:'3', paciente_id:'p1', fecha:dDate(9), concepto:'Sesión semanal', monto:18000, tipo:'honorario'}
   ],
   objetivos: [
-    {id:'o1', created_at:'1', paciente_id:'p1', fecha:dDate(1), area:'Comunicación', estado:'en proceso', objetivo:'Iniciar intercambios comunicativos con sus pares durante el juego.', obs:'Avances en contextos estructurados; reforzar en recreo.'},
+    {id:'o1', created_at:'1', paciente_id:'p1', fecha:dDate(1), fecha_revision:dDate(28), area:'Comunicación', estado:'en proceso', objetivo:'Iniciar intercambios comunicativos con sus pares durante el juego.', criterio:'Logra 3 intercambios espontáneos en una jornada, 4 de 5 días.', obs:'Avances en contextos estructurados; reforzar en recreo.'},
     {id:'o2', created_at:'2', paciente_id:'p1', fecha:dDate(1), area:'Autonomía', estado:'logrado', objetivo:'Organizar sus materiales al comenzar y finalizar la jornada.', obs:''},
     {id:'o3', created_at:'3', paciente_id:'p2', fecha:dDate(3), area:'Conducta', estado:'pendiente', objetivo:'Tolerar la espera de turnos en actividades grupales.', obs:''},
     {id:'o4', created_at:'4', paciente_id:'p3', fecha:dDate(2), area:'Lenguaje', estado:'en proceso', objetivo:'Ampliar vocabulario expresivo en situaciones cotidianas.', obs:''}
   ],
   eventos: [
-    {id:'e1', created_at:'1', paciente_id:'p1', fecha:dDate(5), hora:'10:00', titulo:'Sesión de acompañamiento', tipo:'sesion'},
+    {id:'e1', created_at:'1', paciente_id:'p1', fecha:dDate(5), hora:'10:00', titulo:'Sesión de acompañamiento', tipo:'sesion', lugar:'Esc. Normal N° 12', nota:'Coordinar con la docente integradora.'},
     {id:'e2', created_at:'2', paciente_id:null, fecha:dDate(12), hora:'16:30', titulo:'Reunión de equipo interdisciplinario', tipo:'reunion'},
     {id:'e3', created_at:'3', paciente_id:'p2', fecha:dDate(20), hora:'11:00', titulo:'Entrevista con la familia', tipo:'otro'}
   ]
 };
 
+// Caché en memoria: evita repedir la misma tabla en cada cambio de sección.
+let _cache = {};
+const CACHE_TTL = 90000; // 90 s; se invalida al escribir
+function invalidateCache(){ _cache = {}; }
 async function dbGet(table, extra='') {
-  if (!offlineMode) { const r = await sbFetch(table+'?order=created_at.asc'+extra); if (r !== null) return r; offlineMode = true; }
-  return (demoStore[table] || []).slice();
+  if (offlineMode) return (demoStore[table] || []).slice();
+  const key = table + extra, now = Date.now(), c = _cache[key];
+  if (c && (now - c.ts) < CACHE_TTL) {
+    const r = await c.p;
+    return Array.isArray(r) ? r.slice() : (demoStore[table] || []).slice();
+  }
+  const p = sbFetch(table + '?order=created_at.asc' + extra).then(r => {
+    if (r !== null) return r;
+    offlineMode = true; return (demoStore[table] || []);
+  });
+  _cache[key] = { p, ts: now };
+  const r = await p;
+  return Array.isArray(r) ? r.slice() : (demoStore[table] || []).slice();
+}
+function prefetchAll(){
+  if (offlineMode) return;
+  ['pacientes','notas','asistencias','conductas','objetivos','informes','gastos','eventos'].forEach(t => { dbGet(t).catch(()=>{}); });
 }
 async function dbInsert(table, data) {
   if (offlineMode) { const item = { ...data, id: uid(), created_at: Date.now().toString() }; (demoStore[table] = demoStore[table] || []).push(item); return [item]; }
-  return await sbFetch(table, { method:'POST', body:JSON.stringify(data) });
+  const r = await sbFetch(table, { method:'POST', body:JSON.stringify(data) });
+  invalidateCache(); return r;
 }
 async function dbUpdate(table, id, data) {
   if (offlineMode) { const arr = demoStore[table] || []; const i = arr.findIndex(x=>x.id===id); if (i>=0) arr[i] = { ...arr[i], ...data }; return [arr[i]]; }
-  return await sbFetch(table+'?id=eq.'+id, { method:'PATCH', body:JSON.stringify(data) });
+  const r = await sbFetch(table+'?id=eq.'+id, { method:'PATCH', body:JSON.stringify(data) });
+  invalidateCache(); return r;
 }
 async function dbDelete(table, id) {
   if (offlineMode) { demoStore[table] = (demoStore[table] || []).filter(x=>x.id!==id); return []; }
-  return await sbFetch(table+'?id=eq.'+id, { method:'DELETE' });
+  const r = await sbFetch(table+'?id=eq.'+id, { method:'DELETE' });
+  invalidateCache(); return r;
 }
 
 // set logos
@@ -523,10 +586,10 @@ document.querySelectorAll('.logo-box').forEach(b=>b.innerHTML=LOGO_SVG);
 
 // ---- Temas ----
 const THEMES = {
-  clasico: { label:'Violeta', a:'#5B4A82', b:'#B86B8B' },
-  salvia:  { label:'Salvia',  a:'#3D6B5A', b:'#A98B6B' },
-  lavanda: { label:'Lavanda', a:'#5B4B8A', b:'#B06A8F' },
-  oceano:  { label:'Océano',  a:'#1D6A73', b:'#C77A63' }
+  clasico: { label:'Eucalipto', a:'#2F6E5D', b:'#C2764F' },
+  salvia:  { label:'Bosque',    a:'#3C6E52', b:'#B0895A' },
+  lavanda: { label:'Lavanda',   a:'#5B4B8A', b:'#B06A8F' },
+  oceano:  { label:'Océano',    a:'#1D6E73', b:'#C77A63' }
 };
 function saveTheme(t){ try{ localStorage.setItem('at_theme', t); }catch(e){} }
 function loadTheme(){ try{ return localStorage.getItem('at_theme'); }catch(e){ return null; } }
@@ -563,7 +626,7 @@ document.addEventListener('click', function(e){
   if (typeof anime === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const b = e.target.closest('.btn-primary,.btn-icon,.btn-ghost,.theme-dot,.tab-btn');
-  if (!b) return;
+  if (!b || typeof anime === 'undefined') return;
   anime.remove(b);
   anime({ targets:b, scale:[{value:0.9,duration:95},{value:1,duration:300}], easing:'easeOutBack',
     complete:function(){ b.style.transform=''; b.style.willChange=''; } });
@@ -602,12 +665,37 @@ async function initApp() {
   buildPacFiltro();
   currentTab = CAN_SEE[currentRole][0];
   renderTab();
+  prefetchAll();
 }
 
 const NAV_SECTIONS = [
   { label:'Seguimiento',   tabs:['pacientes','notas','asistencias','conductas','objetivos'] },
   { label:'Documentación', tabs:['informes','gastos','calendario'] }
 ];
+const NAV_MAIN = ['pacientes','conductas','objetivos','asistencias','calendario','notas','informes','gastos'];
+ICONS.mas = SV+'<rect x="4" y="4" width="6.4" height="6.4" rx="1.7"/><rect x="13.6" y="4" width="6.4" height="6.4" rx="1.7"/><rect x="4" y="13.6" width="6.4" height="6.4" rx="1.7"/><rect x="13.6" y="13.6" width="6.4" height="6.4" rx="1.7"/></svg>';
+function buildBottomNav(){
+  const nav = document.getElementById('bottom-nav');
+  if(!nav) return;
+  const allowed = CAN_SEE[currentRole] || [];
+  const main = NAV_MAIN.filter(t=>allowed.includes(t)).slice(0,4);
+  nav.innerHTML = main.map(t=>`<button id="bnav-${t}" onclick="switchTab('${t}')" aria-label="${TAB_LABELS[t]}"><span class="nav-ico">${ICONS[t]}</span>${TAB_LABELS[t]}</button>`).join('')
+    + `<button id="bnav-mas" onclick="openMas()" aria-label="Más secciones y opciones"><span class="nav-ico">${ICONS.mas}</span>Más</button>`;
+  updateBottomNavActive();
+}
+function updateBottomNavActive(){
+  const nav = document.getElementById('bottom-nav');
+  if(!nav || !nav.children.length) return;
+  nav.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  const b = document.getElementById('bnav-'+currentTab);
+  if(b) b.classList.add('active');
+  else { const m=document.getElementById('bnav-mas'); if(m) m.classList.add('active'); }
+}
+function openMas(){
+  const sb = document.getElementById('sidebar');
+  sb.classList.add('open');
+  document.getElementById('overlay-close').style.display='block';
+}
 function buildSidebar() {
   const allowed = CAN_SEE[currentRole];
   document.getElementById('sidebar-nav').innerHTML = NAV_SECTIONS.map(sec=>{
@@ -624,6 +712,7 @@ function buildSidebar() {
     <div><p style="font-size:12px;font-weight:500;color:var(--navy)">${currentUser}</p>
     <span class="pill pill-gold" style="font-size:10px">${currentRole}</span></div>`;
   if (currentRole==='familia') document.getElementById('pac-filtro-wrap').style.display='none';
+  buildBottomNav();
 }
 
 function buildPacFiltro() {
@@ -636,6 +725,7 @@ function buildPacFiltro() {
 
 function switchTab(t) {
   currentTab = t;
+  detailPac = null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   const btn = document.getElementById('tab-'+t);
   if (btn) btn.classList.add('active');
@@ -795,6 +885,114 @@ function chartCard(titulo, leyenda, svg){
       <div style="display:flex;gap:12px;flex-wrap:wrap">${leyenda}</div>
     </div>${svg}</div>`;
 }
+// ---- Gráficos enriquecidos ----
+const CH_RED='#E0796F', CH_AMBER='#E3A94F';
+function trendChip(delta, goodUp){
+  if(delta==null) return '';
+  const base='font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap;line-height:1.6;display:inline-flex;align-items:center';
+  if(delta===0) return `<span style="${base};background:var(--surface-soft);color:var(--muted)">estable</span>`;
+  const good=(delta>0)===goodUp;
+  return `<span style="${base};background:${good?'var(--sage-light)':'#FBEAEA'};color:${good?'#2C6B5C':'#9B3B3B'}">${delta>0?'▲':'▼'} ${Math.abs(delta)}</span>`;
+}
+function statStrip(items){
+  return `<div style="display:flex;gap:22px;flex-wrap:wrap;margin-bottom:16px">${items.map(s=>`<div><div style="display:flex;align-items:center;gap:7px"><span class="pf" style="font-size:24px;font-weight:700;color:var(--navy);line-height:1">${s.v}</span>${s.chip||''}</div><p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:5px">${s.l}</p></div>`).join('')}</div>`;
+}
+function chartCardRich(titulo, strip, leyenda, svg){
+  return `<div class="card" style="padding:17px 18px 13px;margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:13px">
+      <p style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:-.01em">${titulo}</p>
+      <div style="display:flex;gap:13px;flex-wrap:wrap">${leyenda}</div>
+    </div>${strip}<div style="overflow-x:auto">${svg}</div></div>`;
+}
+function divergingChart(meses, pos, neg, neu){
+  const LP=22, RP=10, TP=15, half=50, BP=25, slot=58;
+  const W=LP+meses.length*slot+RP, mid=TP+half, H=TP+2*half+BP;
+  let max=1; meses.forEach((m,i)=>{ max=Math.max(max, pos[i]||0, neg[i]||0); });
+  let g='';
+  [TP, TP+half/2, mid, mid+half/2, mid+half].forEach(y=>{ g+=`<line x1="${LP}" y1="${y}" x2="${W-RP}" y2="${y}" stroke="var(--line-soft)" stroke-width="1"/>`; });
+  g+=`<line x1="${LP}" y1="${mid}" x2="${W-RP}" y2="${mid}" stroke="color-mix(in oklab,var(--navy) 24%,transparent)" stroke-width="1.2"/>`;
+  g+=`<text x="${LP-5}" y="${TP+3}" text-anchor="end" font-size="9" fill="var(--faint)" font-family="Inter,sans-serif">${max}</text>`;
+  g+=`<text x="${LP-5}" y="${mid+3}" text-anchor="end" font-size="9" fill="var(--faint)" font-family="Inter,sans-serif">0</text>`;
+  g+=`<text x="${LP-5}" y="${mid+half}" text-anchor="end" font-size="9" fill="var(--faint)" font-family="Inter,sans-serif">${max}</text>`;
+  const bw=20;
+  meses.forEach((mo,i)=>{
+    const cx=LP+i*slot+slot/2, p=pos[i]||0, ng=neg[i]||0, nu=neu[i]||0;
+    if(p){ const bh=Math.max(p/max*half,2); g+=`<rect x="${(cx-bw/2).toFixed(1)}" y="${(mid-bh).toFixed(1)}" width="${bw}" height="${bh.toFixed(1)}" rx="3" fill="var(--sage)"><title>${mo.label}: ${p} positivas</title></rect><text x="${cx}" y="${(mid-bh-4).toFixed(1)}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2C6B5C" font-family="Inter,sans-serif">${p}</text>`; }
+    if(ng){ const bh=Math.max(ng/max*half,2); g+=`<rect x="${(cx-bw/2).toFixed(1)}" y="${mid}" width="${bw}" height="${bh.toFixed(1)}" rx="3" fill="${CH_RED}"><title>${mo.label}: ${ng} negativas</title></rect><text x="${cx}" y="${(mid+bh+12).toFixed(1)}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#9B3B3B" font-family="Inter,sans-serif">${ng}</text>`; }
+    if(nu){ g+=`<circle cx="${cx}" cy="${mid}" r="${Math.min(3+nu,6)}" fill="var(--gold)" stroke="#fff" stroke-width="1.4"><title>${mo.label}: ${nu} neutras</title></circle>`; }
+    g+=`<text x="${cx}" y="${H-7}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="Inter,sans-serif">${mo.label}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${Math.max(W,240)}px;height:auto;overflow:visible">${g}</svg>`;
+}
+function stacked100Chart(meses, seg){
+  const LP=30, RP=10, TP=13, PH=116, BP=24, slot=58;
+  const W=LP+meses.length*slot+RP, H=TP+PH+BP;
+  let g='';
+  [0,25,50,75,100].forEach(p=>{ const y=TP+PH*(1-p/100); g+=`<line x1="${LP}" y1="${y}" x2="${W-RP}" y2="${y}" stroke="var(--line-soft)" stroke-width="1"/><text x="${LP-6}" y="${y+3}" text-anchor="end" font-size="9" fill="var(--faint)" font-family="Inter,sans-serif">${p}%</text>`; });
+  const bw=Math.min(26, slot-20);
+  meses.forEach((mo,i)=>{
+    const cx=LP+i*slot+slot/2, x=cx-bw/2;
+    const total=seg.reduce((s,se)=>s+(se.values[i]||0),0);
+    if(!total){ g+=`<rect x="${x.toFixed(1)}" y="${TP}" width="${bw}" height="${PH}" rx="4" fill="var(--surface-soft)"/>`; }
+    else {
+      let acc=0;
+      seg.forEach(se=>{ const v=se.values[i]||0; if(!v) return; const segH=v/total*PH, y=TP+PH-acc-segH; acc+=segH; g+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${segH.toFixed(1)}" fill="${se.color}"><title>${mo.label} · ${se.label}: ${v} (${Math.round(v/total*100)}%)</title></rect>`; });
+      g+=`<text x="${cx}" y="${TP-3}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2C6B5C" font-family="Inter,sans-serif">${Math.round((seg[0].values[i]||0)/total*100)}%</text>`;
+    }
+    g+=`<text x="${cx}" y="${H-7}" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="Inter,sans-serif">${mo.label}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${Math.max(W,240)}px;height:auto;overflow:visible">${g}</svg>`;
+}
+
+// ---- Gráficos de dona (donut) animados ----
+function pctOf(v,total){ return total?Math.round(v*100/total)+'%':'0%'; }
+function donutChart(segments, centerBig, centerSub){
+  const total=segments.reduce((s,x)=>s+(x.value||0),0);
+  const size=168, cx=size/2, cy=size/2, r=62, sw=22, C=2*Math.PI*r;
+  const activos=segments.filter(s=>s.value>0);
+  let arcs='', ang=-90;
+  if(total>0){
+    activos.forEach(s=>{
+      const frac=s.value/total;
+      const gap= activos.length>1 ? 3 : 0;
+      const arcLen=Math.max(frac*C-gap, 1);
+      const start=ang; ang += frac*360;
+      arcs+=`<circle class="donut-seg" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${arcLen.toFixed(2)} ${(C+arcLen).toFixed(2)}" stroke-dashoffset="${arcLen.toFixed(2)}" transform="rotate(${start.toFixed(2)} ${cx} ${cy})" style="transition:stroke-dashoffset .95s cubic-bezier(.2,.8,.2,1)"><title>${s.label}: ${s.value} (${Math.round(frac*100)}%)</title></circle>`;
+    });
+  } else {
+    arcs=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--surface-soft)" stroke-width="${sw}"/>`;
+  }
+  return `<svg class="donut" viewBox="0 0 ${size} ${size}" style="width:168px;max-width:100%;height:auto">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--line-soft)" stroke-width="${sw}"/>
+    ${arcs}
+    <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="32" font-weight="700" fill="var(--navy)" font-family="Fustat,Inter,sans-serif">${centerBig}</text>
+    <text x="${cx}" y="${cy+17}" text-anchor="middle" font-size="10" font-weight="600" fill="var(--muted)" font-family="Inter,sans-serif" letter-spacing="0.06em">${centerSub}</text>
+  </svg>`;
+}
+function donutLegendRow(color,label,value,pct){
+  return `<div style="display:flex;align-items:center;gap:11px">
+    <span style="width:11px;height:11px;border-radius:3px;background:${color};flex-shrink:0"></span>
+    <span style="flex:1;font-size:13.5px;color:var(--navy)">${label}</span>
+    <span class="pf" style="font-size:15px;font-weight:700;color:var(--navy)">${value}</span>
+    <span style="font-size:12px;color:var(--muted);width:42px;text-align:right">${pct}</span>
+  </div>`;
+}
+function donutCard(titulo, chip, donutSvg, legend){
+  return `<div class="card" style="padding:18px;margin-bottom:16px">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:4px"><p style="font-size:13px;font-weight:700;color:var(--navy)">${titulo}</p>${chip||''}</div>
+    <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:10px">
+      <div style="flex-shrink:0">${donutSvg}</div>
+      <div style="flex:1;min-width:170px;display:flex;flex-direction:column;gap:13px">${legend}</div>
+    </div></div>`;
+}
+function animateDonut(root){
+  const segs=(root||document).querySelectorAll('.donut-seg');
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  segs.forEach(el=>{
+    if(reduce){ el.style.transition='none'; el.style.strokeDashoffset='0'; return; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ el.style.strokeDashoffset='0'; }));
+  });
+}
 
 // ---- Objetivos terapéuticos ----
 function estadoPill(e){ return e==='logrado'?'pill-green':e==='en proceso'?'pill-amber':'pill-gray'; }
@@ -820,13 +1018,14 @@ async function renderObjetivos(el, pf){
   el.innerHTML = metrics + data.map(o=>`
     <div class="card" style="padding:13px 16px;margin-bottom:9px">
       <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:6px">
-        <div style="min-width:0"><p style="font-weight:500;font-size:14px;color:var(--navy)">${nomPac(o.paciente_id)}</p><p style="font-size:11px;color:var(--muted);margin-top:1px">${o.area||''}${o.fecha?' · '+o.fecha:''}</p></div>
+        <div style="min-width:0"><p style="font-weight:500;font-size:14px;color:var(--navy)">${nomPac(o.paciente_id)}</p><p style="font-size:11px;color:var(--muted);margin-top:1px">${o.area||''}${o.fecha?' · '+o.fecha:''}${o.fecha_revision?' · revisar '+o.fecha_revision:''}</p></div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
           <span class="pill ${estadoPill(o.estado)}">${o.estado||''}</span>
           ${currentRole==='admin'?`<div style="display:flex;gap:2px"><button class="btn-icon" aria-label="Editar" onclick='openEdit("objetivo",${JSON.stringify(o)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('objetivos','${o.id}')">${ICONS_DEL}</button></div>`:''}
         </div>
       </div>
       <p style="font-size:13.5px;color:var(--navy);line-height:1.5;font-weight:500">${o.objetivo||''}</p>
+      ${o.criterio?`<p style="font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5"><strong style="color:var(--navy);font-weight:600">Criterio de logro:</strong> ${o.criterio}</p>`:''}
       ${o.obs?`<p style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">${o.obs}</p>`:''}
     </div>`).join('');
   runCounters();
@@ -857,6 +1056,7 @@ function exportarPDF(){
 
 async function renderTab() {
   document.getElementById('tab-title').textContent = TAB_LABELS[currentTab];
+  updateBottomNavActive();
   const gl = document.getElementById('gline'); gl.style.animation='none'; void gl.offsetWidth; gl.style.animation='';
   const pf = getPacFiltro();
   document.getElementById('tab-sub').textContent = pf ? nomPac(pf) : '';
@@ -898,12 +1098,74 @@ function openEdit(tipo, item) { editItem=item; openModal(tipo); }
 async function doDelete(table, id) { if(!confirm('¿Eliminar este registro?')) return; await dbDelete(table,id); renderTab(); }
 
 function verSeguimiento(pid){
+  detailPac = pid;
+  currentTab = 'pacientes';
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const btn = document.getElementById('tab-pacientes'); if(btn) btn.classList.add('active');
+  closeSidebar();
+  renderTab();
+}
+function volverPacientes(){ detailPac = null; renderTab(); }
+function irAModulo(tab, pid){
   const sel = document.getElementById('pac-filtro');
   if(sel){ sel.value = pid; if(sel._csBuild) sel._csBuild(); }
-  switchTab('notas');
+  switchTab(tab);
+}
+async function renderPacienteDetalle(el, pid){
+  const p = pacientes.find(x=>x.id===pid);
+  if(!p){ detailPac=null; return renderPacientes(el); }
+  document.getElementById('add-btn').style.display='none';
+  document.getElementById('tab-sub').textContent = 'Ficha de seguimiento';
+  const [notas, asist, cond, obj] = await Promise.all([dbGet('notas'),dbGet('asistencias'),dbGet('conductas'),dbGet('objetivos')]);
+  const pN=notas.filter(x=>x.paciente_id===pid), pA=asist.filter(x=>x.paciente_id===pid), pC=cond.filter(x=>x.paciente_id===pid), pO=obj.filter(x=>x.paciente_id===pid);
+  const pres=pA.filter(a=>a.estado==='presente').length;
+  const asistProm=pA.length?Math.round(pres*100/pA.length)+'%':'—';
+  const objLogr=pO.filter(o=>o.estado==='logrado').length;
+  const ini=p.nombre.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  const admin=currentRole==='admin';
+  const tel=(p.contacto||'').replace(/[^\d+]/g,'');
+  const rows=[['DNI',p.dni],['Fecha de nacimiento',p.fecha_nacimiento],['Edad',p.edad?p.edad+' años':''],['Obra social',p.obra_social],['N° de afiliado',p.nro_afiliado],['Diagnóstico',p.diagnostico],['Institución educativa',p.institucion],['Grado / Sala',p.grado],['Docente / M. integradora',p.docente],['Profesional derivante',p.profesional_derivante],['Equipo tratante',p.equipo],['Medicación',p.medicacion],['Frecuencia de AT',p.frecuencia],['Inicio del acompañamiento',p.fecha_inicio],['Contacto',p.contacto]];
+  const ficha=rows.map(([l,v])=>`<div><p class="idx-meta-label" style="margin-bottom:3px">${l}</p><p style="font-size:13.5px;color:${v?'var(--navy)':'var(--faint)'}">${v||'—'}</p></div>`).join('');
+  const metricas=[['Notas',pN.length],['Asistencia',asistProm],['Objetivos',pO.length?objLogr+'/'+pO.length:'—'],['Conductas',pC.length]];
+  const modulos=[['notas','Notas'],['asistencias','Asistencias'],['conductas','Conductas'],['objetivos','Objetivos'],['informes','Informes'],['gastos','Gastos']].filter(m=>(CAN_SEE[currentRole]||[]).includes(m[0]));
+  el.innerHTML=`
+    <button class="btn-ghost" onclick="volverPacientes()" style="margin-bottom:16px;display:inline-flex;align-items:center;gap:6px">← Volver a pacientes</button>
+    <div class="card" style="padding:1.25rem 1.35rem;margin-bottom:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div class="monogram" aria-hidden="true" style="width:60px;height:60px;font-size:22px">${ini}</div>
+      <div style="flex:1 1 190px;min-width:170px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <p class="serif-tight" style="font-size:22px;font-weight:600;color:var(--navy)">${p.nombre}</p>
+          ${p.diagnostico?`<span class="pill pill-soft">${p.diagnostico}</span>`:''}
+        </div>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:4px">${[p.institucion,p.grado,p.edad?p.edad+' años':''].filter(Boolean).join(' · ')||'Sin datos escolares cargados'}</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+        ${tel.length>=7?`<a class="btn-ghost" href="tel:${tel}" style="font-size:12px">Contactar</a>`:''}
+        ${admin?`<button class="btn-ghost" onclick='openEdit("paciente",${JSON.stringify(p)})' style="font-size:12px">Editar ficha</button>`:''}
+      </div>
+    </div>
+    <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:11px;margin-bottom:16px">
+      ${metricas.map(([l,v])=>`<div class="metric"><p class="idx-meta-label">${l}</p><p class="pf" style="font-size:24px;font-weight:600;color:var(--navy);margin-top:3px">${v}</p></div>`).join('')}
+    </div>
+    <div class="card" style="padding:1.25rem 1.35rem;margin-bottom:16px">
+      <p class="idx-meta-label" style="margin-bottom:14px">Datos del paciente</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px 20px">${ficha}</div>
+      ${p.observaciones?`<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line)"><p class="idx-meta-label" style="margin-bottom:4px">Observaciones</p><p style="font-size:13.5px;color:var(--navy);line-height:1.55">${p.observaciones}</p></div>`:''}
+    </div>
+    ${pO.length?`<div class="card" style="padding:1.1rem 1.35rem;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><p class="idx-meta-label">Objetivos terapéuticos</p><button class="btn-ghost" style="font-size:11.5px;padding:5px 11px" onclick="irAModulo('objetivos','${pid}')">Ver todos</button></div>
+      ${pO.slice(0,4).map(o=>`<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft)"><p style="font-size:13px;color:var(--navy);line-height:1.45">${o.objetivo||''}<br><span style="font-size:11px;color:var(--muted)">${o.area||''}</span></p><span class="pill ${estadoPill(o.estado)}" style="flex-shrink:0">${o.estado||''}</span></div>`).join('')}
+    </div>`:''}
+    <div class="card" style="padding:1.1rem 1.35rem">
+      <p class="idx-meta-label" style="margin-bottom:12px">Ver seguimiento por módulo</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${modulos.map(([t,l])=>`<button class="btn-ghost" style="font-size:12.5px" onclick="irAModulo('${t}','${pid}')">${l}</button>`).join('')}
+      </div>
+    </div>`;
 }
 async function renderPacientes(el) {
   pacientes = await dbGet('pacientes');
+  if (detailPac) { return renderPacienteDetalle(el, detailPac); }
   const [notas, asist, objetivos] = await Promise.all([dbGet('notas'), dbGet('asistencias'), dbGet('objetivos')]);
   const now = new Date(), ym = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
   const notasMes = notas.filter(n=>n.fecha && n.fecha.slice(0,7)===ym).length;
@@ -925,7 +1187,8 @@ async function renderPacientes(el) {
 
   el.innerHTML = statsHTML + pacientes.map(p=>{
     const ini = p.nombre.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-    const meta = [p.institucion, p.edad?p.edad+' años':''].filter(Boolean).join(' · ');
+    const meta = [p.institucion, p.grado, p.edad?p.edad+' años':''].filter(Boolean).join(' · ');
+    const ficha = [p.obra_social, p.frecuencia].filter(Boolean).join(' · ');
     const pN = notas.filter(n=>n.paciente_id===p.id).sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
     const ult = pN[0];
     const snippet = ult ? `Última nota: ${ult.materia||'—'}${ult.fecha?' · '+ult.fecha:''}` : 'Sin notas cargadas aún';
@@ -940,6 +1203,7 @@ async function renderPacientes(el) {
           ${p.diagnostico?`<span class="pill pill-soft">${p.diagnostico}</span>`:''}
         </div>
         ${meta?`<p style="font-size:12.5px;color:var(--muted);margin-top:4px">${meta}</p>`:''}
+        ${ficha?`<p style="font-size:12px;color:var(--muted);margin-top:3px">${ficha}</p>`:''}
         <p style="font-size:12.5px;color:var(--muted);margin-top:6px">${snippet}${p.contacto?`<span style="color:var(--line);margin:0 7px">·</span>${p.contacto}`:''}</p>
       </div>
       <div class="pac-actions">
@@ -961,7 +1225,7 @@ async function renderNotas(el, pf) {
       <div style="width:48px;height:48px;border-radius:12px;background:${n.nota>=7?'var(--sage-light)':'#fceaea'};display:flex;align-items:center;justify-content:center;font-family:'Fustat','Inter',sans-serif;font-size:20px;font-weight:600;color:${n.nota>=7?'#3d6b33':'#7a1f1f'};flex-shrink:0">${n.nota}</div>
       <div style="flex:1;min-width:0">
         <p class="serif-tight" style="font-size:17px;font-weight:600;color:var(--navy)">${n.materia||'—'}</p>
-        <p style="font-size:12.5px;color:var(--muted);margin-top:3px">${nomPac(n.paciente_id)} · ${n.fecha||''}</p>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:3px">${[nomPac(n.paciente_id),n.fecha,n.periodo].filter(Boolean).join(' · ')}</p>
         ${n.obs?`<p class="standfirst" style="font-size:13px;color:color-mix(in oklab,var(--navy) 70%,transparent);margin-top:4px">${n.obs}</p>`:''}
       </div>
       <span class="pill ${n.nota>=7?'pill-green':'pill-red'}" style="flex-shrink:0">${n.nota>=7?'aprobado':'desaprobado'}</span>
@@ -975,28 +1239,28 @@ async function renderAsistencias(el, pf) {
   const cnt = e => data.filter(a=>a.estado===e).length;
   const pres=cnt('presente'), aus=cnt('ausente'), just=cnt('justificado'), tot=data.length;
   const mesesA=mesesDe(data);
-  const chartA=mesesA.length?chartCard('Evolución de asistencias',
-    leyendaItem('var(--sage)','Presentes')+leyendaItem('#e24b4a','Ausentes')+leyendaItem('#ef9f27','Justificadas'),
-    barChart(mesesA,[
-      {color:'var(--sage)',values:contarPorMes(data,mesesA,x=>x.estado==='presente')},
-      {color:'#e24b4a',values:contarPorMes(data,mesesA,x=>x.estado==='ausente')},
-      {color:'#ef9f27',values:contarPorMes(data,mesesA,x=>x.estado==='justificado')}
-    ])):'';
+  const presM=contarPorMes(data,mesesA,x=>x.estado==='presente');
+  const justM=contarPorMes(data,mesesA,x=>x.estado==='justificado');
+  const ausM=contarPorMes(data,mesesA,x=>x.estado==='ausente');
+  const totM=mesesA.map((m,i)=>presM[i]+justM[i]+ausM[i]);
+  const rateM=mesesA.map((m,i)=>totM[i]?Math.round(presM[i]*100/totM[i]):0);
+  const trendA=rateM.length>=2?rateM[rateM.length-1]-rateM[rateM.length-2]:null;
+  const presentismo=tot?Math.round(pres*100/tot)+'%':'—';
+  const chartA=data.length?donutCard('Presentismo',
+    trendChip(trendA,true),
+    donutChart([{value:pres,color:'var(--sage)',label:'Presentes'},{value:just,color:CH_AMBER,label:'Justificadas'},{value:aus,color:CH_RED,label:'Ausentes'}], presentismo, 'presentismo'),
+    donutLegendRow('var(--sage)','Presentes',pres,pctOf(pres,tot))+donutLegendRow(CH_AMBER,'Justificadas',just,pctOf(just,tot))+donutLegendRow(CH_RED,'Ausentes',aus,pctOf(aus,tot))
+  ):'';
   el.innerHTML = `
-    <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:18px">
-      ${[['Presentes',pres],['Ausentes',aus],['Justificados',just]].map(([l,v])=>`
-        <div class="metric"><p style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:500;margin-bottom:4px">${l}</p>
-        <p class="pf count-num" data-count="${v}" style="font-size:25px;font-weight:500;color:var(--navy)">0</p>
-        ${tot?`<p style="font-size:11px;color:var(--muted);margin-top:2px">${Math.round(v*100/tot)}%</p>`:''}</div>`).join('')}
-    </div>
     ${chartA}
     ${data.length?'<div>'+data.map(a=>`
     <div class="idx-row list-row">
       <div style="width:14px;height:14px;border-radius:50%;background:${a.estado==='presente'?'var(--sage)':a.estado==='ausente'?'#e24b4a':'#ef9f27'};flex-shrink:0;margin:0 4px"></div>
-      <div style="flex:1;min-width:0"><p class="serif-tight" style="font-size:17px;font-weight:600;color:var(--navy)">${nomPac(a.paciente_id)}</p><p style="font-size:12.5px;color:var(--muted);margin-top:3px">${a.fecha||''}</p></div>
+      <div style="flex:1;min-width:0"><p class="serif-tight" style="font-size:17px;font-weight:600;color:var(--navy)">${nomPac(a.paciente_id)}</p><p style="font-size:12.5px;color:var(--muted);margin-top:3px">${[a.fecha,a.ambito,a.horas?a.horas+' h':''].filter(Boolean).join(' · ')}${a.observacion?' — '+a.observacion:''}</p></div>
       <span class="pill ${a.estado==='presente'?'pill-green':a.estado==='ausente'?'pill-red':'pill-amber'}" style="flex-shrink:0">${a.estado}</span>
       ${currentRole==='admin'?`<div class="idx-actions" style="display:flex;gap:2px;flex-shrink:0"><button class="btn-icon" aria-label="Editar" onclick='openEdit("asistencia",${JSON.stringify(a)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('asistencias','${a.id}')">${ICONS_DEL}</button></div>`:''}
     </div>`).join('')+'</div>':emptyState('asistencias','No se registraron asistencias todavía','La asistencia que cargues va a aparecer acá.')}`;
+  animateDonut(el);
   runCounters();
 }
 
@@ -1005,13 +1269,18 @@ async function renderConductas(el, pf) {
   if (pf) data = data.filter(x=>x.paciente_id===pf);
   if (!data.length) { el.innerHTML=emptyState('conductas','Todavía no hay conductas registradas','Los registros de conducta van a aparecer acá.'); return; }
   const mesesC=mesesDe(data);
-  const chartC=mesesC.length?chartCard('Evolución de conductas',
-    leyendaItem('var(--sage)','Positivas')+leyendaItem('var(--gold)','Neutras')+leyendaItem('#e24b4a','Negativas'),
-    barChart(mesesC,[
-      {color:'var(--sage)',values:contarPorMes(data,mesesC,x=>x.tipo==='positivo')},
-      {color:'var(--gold)',values:contarPorMes(data,mesesC,x=>x.tipo==='neutro')},
-      {color:'#e24b4a',values:contarPorMes(data,mesesC,x=>x.tipo==='negativo')}
-    ])):'';
+  const posM=contarPorMes(data,mesesC,x=>x.tipo==='positivo');
+  const negM=contarPorMes(data,mesesC,x=>x.tipo==='negativo');
+  const neuM=contarPorMes(data,mesesC,x=>x.tipo==='neutro');
+  const totalC=data.length, posT=data.filter(x=>x.tipo==='positivo').length, negT=data.filter(x=>x.tipo==='negativo').length, neuT=data.filter(x=>x.tipo==='neutro').length;
+  const pctPos=totalC?Math.round(posT*100/totalC)+'%':'—';
+  const netM=mesesC.map((m,i)=>posM[i]-negM[i]);
+  const trendC=netM.length>=2?netM[netM.length-1]-netM[netM.length-2]:null;
+  const chartC=totalC?donutCard('Balance conductual',
+    trendChip(trendC,true),
+    donutChart([{value:posT,color:'var(--sage)',label:'Positivas'},{value:neuT,color:'var(--gold)',label:'Neutras'},{value:negT,color:CH_RED,label:'Negativas'}], pctPos, 'positivas'),
+    donutLegendRow('var(--sage)','Positivas',posT,pctOf(posT,totalC))+donutLegendRow('var(--gold)','Neutras',neuT,pctOf(neuT,totalC))+donutLegendRow(CH_RED,'Negativas',negT,pctOf(negT,totalC))
+  ):'';
   el.innerHTML = chartC + '<div>' + data.map(c=>`
     <div class="idx-row list-row" style="align-items:flex-start">
       <div style="width:14px;height:14px;border-radius:50%;background:${c.tipo==='positivo'?'var(--sage)':c.tipo==='negativo'?'#e24b4a':'var(--gold)'};flex-shrink:0;margin:7px 4px 0"></div>
@@ -1020,11 +1289,14 @@ async function renderConductas(el, pf) {
           <p class="serif-tight" style="font-size:16px;font-weight:600;color:var(--navy)">${nomPac(c.paciente_id)}</p>
           <span class="pill ${c.tipo==='positivo'?'pill-green':c.tipo==='negativo'?'pill-red':'pill-amber'}" style="flex-shrink:0">${c.tipo||''}</span>
         </div>
-        <p style="font-size:11.5px;color:var(--muted);margin-top:2px">${c.fecha||''}</p>
-        <p style="font-size:13.5px;color:var(--navy);line-height:1.55;margin-top:7px">${c.descripcion||''}</p>
+        <p style="font-size:11.5px;color:var(--muted);margin-top:2px">${[c.fecha,c.contexto,c.intensidad?'intensidad '+c.intensidad:''].filter(Boolean).join(' · ')}</p>
+        ${c.antecedente?`<p style="font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:7px"><strong style="color:var(--navy);font-weight:600">Antecedente:</strong> ${c.antecedente}</p>`:''}
+        <p style="font-size:13.5px;color:var(--navy);line-height:1.55;margin-top:${c.antecedente?'4px':'7px'}">${c.descripcion||''}</p>
+        ${c.intervencion?`<p style="font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:5px"><strong style="color:var(--navy);font-weight:600">Intervención:</strong> ${c.intervencion}</p>`:''}
       </div>
       ${currentRole==='admin'?`<div class="idx-actions" style="display:flex;gap:2px;flex-shrink:0;margin-top:4px"><button class="btn-icon" aria-label="Editar" onclick='openEdit("conducta",${JSON.stringify(c)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('conductas','${c.id}')">${ICONS_DEL}</button></div>`:''}
     </div>`).join('') + '</div>';
+  animateDonut(el);
 }
 
 async function renderInformes(el, pf) {
@@ -1035,8 +1307,8 @@ async function renderInformes(el, pf) {
     <div class="idx-row list-row">
       <div class="idx-ico" style="width:46px;height:46px;border-radius:12px;background:var(--gold-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold)">${ICONS.informes}</div>
       <div style="flex:1;min-width:0">
-        <p class="serif-tight" style="font-size:16px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${inf.nombre||''}</p>
-        <p style="font-size:12.5px;color:var(--muted);margin-top:3px">${nomPac(inf.paciente_id)} · ${inf.fecha||''}</p>
+        <p class="serif-tight" style="font-size:16px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${inf.enlace?`<a href="${inf.enlace}" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:none">${inf.nombre||'Documento'} ↗</a>`:(inf.nombre||'')}</p>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:3px">${[nomPac(inf.paciente_id),inf.fecha,inf.autor].filter(Boolean).join(' · ')}</p>
       </div>
       <span class="pill pill-blue" style="flex-shrink:0">${inf.categoria||''}</span>
       ${currentRole==='admin'?`<div class="idx-actions" style="display:flex;gap:2px;flex-shrink:0"><button class="btn-icon" aria-label="Editar" onclick='openEdit("informe",${JSON.stringify(inf)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('informes','${inf.id}')">${ICONS_DEL}</button></div>`:''}
@@ -1058,7 +1330,7 @@ async function renderGastos(el, pf) {
     ${data.length?'<div>'+data.map(g=>`
     <div class="idx-row list-row">
       <div class="idx-ico" style="width:46px;height:46px;border-radius:12px;background:${g.tipo==='honorario'?'var(--gold-light)':'var(--sage-light)'};display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${g.tipo==='honorario'?'var(--gold)':'var(--sage)'}">${ICONS.gastos}</div>
-      <div style="flex:1;min-width:0"><p class="serif-tight" style="font-size:16px;font-weight:600;color:var(--navy)">${g.concepto||''}</p><p style="font-size:12.5px;color:var(--muted);margin-top:3px">${nomPac(g.paciente_id)} · ${g.fecha||''}</p></div>
+      <div style="flex:1;min-width:0"><p class="serif-tight" style="font-size:16px;font-weight:600;color:var(--navy)">${g.concepto||''}</p><p style="font-size:12.5px;color:var(--muted);margin-top:3px">${[nomPac(g.paciente_id),g.fecha,g.medio].filter(Boolean).join(' · ')}</p>${g.estado_pago?`<span class="pill ${g.estado_pago==='pagado'?'pill-green':'pill-amber'}" style="margin-top:5px">${g.estado_pago}</span>`:''}</div>
       <div style="text-align:right;flex-shrink:0"><p class="pf" style="font-size:17px;font-weight:600;color:var(--navy)">$${Number(g.monto).toLocaleString()}</p><span class="pill ${g.tipo==='honorario'?'pill-gold':'pill-blue'}" style="margin-top:3px">${g.tipo||''}</span></div>
       ${currentRole==='admin'?`<div class="idx-actions" style="display:flex;gap:2px;flex-shrink:0"><button class="btn-icon" aria-label="Editar" onclick='openEdit("gasto",${JSON.stringify(g)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('gastos','${g.id}')">${ICONS_DEL}</button></div>`:''}
     </div>`).join('')+'</div>':emptyState('gastos','Todavía no hay gastos cargados','Los honorarios y materiales van a aparecer acá.')}`;
@@ -1133,7 +1405,8 @@ function renderCalendarioUI(el) {
       </div>
       <div style="flex:1">
         <p style="font-weight:500;font-size:14px;color:var(--navy)">${ev.titulo||''}</p>
-        <p style="font-size:12px;color:var(--muted);margin-top:2px">🕐 ${ev.hora||''} · ${ev.paciente_id?nomPac(ev.paciente_id):'General'}</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:2px">🕐 ${ev.hora||''} · ${ev.paciente_id?nomPac(ev.paciente_id):'General'}${ev.lugar?' · '+ev.lugar:''}</p>
+        ${ev.nota?`<p style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.45">${ev.nota}</p>`:''}
       </div>
       <span class="pill ${ev.tipo==='sesion'?'pill-gold':ev.tipo==='reunion'?'pill-blue':'pill-gray'}">${ev.tipo||''}</span>
       ${currentRole==='admin'?`<div style="display:flex;gap:2px"><button class="btn-icon" aria-label="Editar" onclick='openEdit("evento",${JSON.stringify(ev)})'>${ICONS_EDIT}</button><button class="btn-icon del" aria-label="Eliminar" onclick="doDelete('eventos','${ev.id}')">${ICONS_DEL}</button></div>`:''}
@@ -1169,14 +1442,24 @@ function openModal(tipo) {
   const isEdit = !!editItem;
   const titles = {nota:isEdit?'Editar nota':'Nueva nota',asistencia:isEdit?'Editar asistencia':'Registrar asistencia',conducta:isEdit?'Editar conducta':'Registrar conducta',objetivo:isEdit?'Editar objetivo':'Nuevo objetivo',informe:isEdit?'Editar informe':'Cargar documento',gasto:isEdit?'Editar gasto':'Agregar gasto',evento:isEdit?'Editar evento':'Nuevo evento',paciente:isEdit?'Editar paciente':'Nuevo paciente'};
   let body='';
-  if(tipo==='paciente'){body=fld('Nombre',fInput('nombre'))+fld('Edad',fInput('edad','','number'))+fld('Institución',fInput('institucion'))+fld('Diagnóstico',fInput('diagnostico'))+fld('Contacto',fInput('contacto'));}
-  else if(tipo==='nota'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Nota (1-10)',fInput('nota','','number'))}</div>`+fld('Materia',fInput('materia'))+fld('Observaciones',fInput('obs','','textarea'));}
-  else if(tipo==='asistencia'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+fld('Fecha',fInput('fecha','','date'))+fld('Estado',fInput('estado','','text',[{v:'presente',l:'Presente'},{v:'ausente',l:'Ausente'},{v:'justificado',l:'Justificado'}]));}
-  else if(tipo==='conducta'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Tipo',fInput('tipo','','text',[{v:'positivo',l:'Positivo'},{v:'neutro',l:'Neutro'},{v:'negativo',l:'Negativo'}]))}</div>`+fld('Descripción',fInput('descripcion','','textarea'));}
-  else if(tipo==='objetivo'){const areas=[{v:'Comunicación',l:'Comunicación'},{v:'Lenguaje',l:'Lenguaje'},{v:'Conducta',l:'Conducta'},{v:'Autonomía',l:'Autonomía'},{v:'Social',l:'Social'},{v:'Académico',l:'Académico'},{v:'Emocional',l:'Emocional'},{v:'Otro',l:'Otro'}];body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Área',fInput('area','','text',areas))}${fld('Estado',fInput('estado','','text',[{v:'pendiente',l:'Pendiente'},{v:'en proceso',l:'En proceso'},{v:'logrado',l:'Logrado'}]))}</div>`+fld('Fecha',fInput('fecha','','date'))+fld('Objetivo',fInput('objetivo','','textarea'))+fld('Observaciones',fInput('obs','','textarea'));}
-  else if(tipo==='informe'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Categoría',fInput('categoria','','text',[{v:'Evaluación',l:'Evaluación'},{v:'Seguimiento',l:'Seguimiento'},{v:'Informe trimestral',l:'Informe trimestral'},{v:'Comunicación familia',l:'Comunicación familia'},{v:'Otro',l:'Otro'}]))}</div>`+fld('Nombre del documento',fInput('nombre'));}
-  else if(tipo==='gasto'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Monto ($)',fInput('monto','','number'))}</div>`+fld('Concepto',fInput('concepto'))+fld('Tipo',fInput('tipo','','text',[{v:'honorario',l:'Honorario'},{v:'material',l:'Material'},{v:'otro',l:'Otro'}]));}
-  else if(tipo==='evento'){const pe=[{v:'',l:'General'},...pacientes.map(p=>({v:p.id,l:p.nombre}))];body=fld('Paciente (opcional)',fInput('paciente_id','','text',pe))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Hora',fInput('hora','','time'))}</div>`+fld('Título',fInput('titulo'))+fld('Tipo',fInput('tipo','','text',[{v:'sesion',l:'Sesión'},{v:'reunion',l:'Reunión'},{v:'otro',l:'Otro'}]));}
+  const sel=(...vs)=>[{v:'',l:'—'},...vs.map(x=>({v:x,l:x.charAt(0).toUpperCase()+x.slice(1)}))];
+  if(tipo==='paciente'){body=fld('Nombre y apellido',fInput('nombre'))
+    +`<div class="grid2">${fld('Fecha de nacimiento',fInput('fecha_nacimiento','','date'))}${fld('Edad',fInput('edad','','number'))}</div>`
+    +`<div class="grid2">${fld('DNI',fInput('dni'))}${fld('Diagnóstico',fInput('diagnostico'))}</div>`
+    +`<div class="grid2">${fld('Obra social',fInput('obra_social'))}${fld('N° de afiliado',fInput('nro_afiliado'))}</div>`
+    +`<div class="grid2">${fld('Institución educativa',fInput('institucion'))}${fld('Grado / Sala',fInput('grado'))}</div>`
+    +`<div class="grid2">${fld('Docente / M. integradora',fInput('docente'))}${fld('Profesional derivante',fInput('profesional_derivante'))}</div>`
+    +fld('Equipo tratante / otras terapias',fInput('equipo','Ej: fono, psicología, TO'))
+    +`<div class="grid2">${fld('Medicación',fInput('medicacion'))}${fld('Frecuencia de AT',fInput('frecuencia','Ej: 3 veces/semana'))}</div>`
+    +`<div class="grid2">${fld('Inicio del acompañamiento',fInput('fecha_inicio','','date'))}${fld('Contacto',fInput('contacto'))}</div>`
+    +fld('Observaciones generales',fInput('observaciones','','textarea'));}
+  else if(tipo==='nota'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Nota (1-10)',fInput('nota','','number'))}</div>`+`<div class="grid2">${fld('Materia',fInput('materia'))}${fld('Período',fInput('periodo','','text',[{v:'',l:'—'},{v:'1er trimestre',l:'1er trimestre'},{v:'2do trimestre',l:'2do trimestre'},{v:'3er trimestre',l:'3er trimestre'},{v:'Anual',l:'Anual'}]))}</div>`+fld('Observaciones',fInput('obs','','textarea'));}
+  else if(tipo==='asistencia'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Estado',fInput('estado','','text',[{v:'presente',l:'Presente'},{v:'ausente',l:'Ausente'},{v:'justificado',l:'Justificado'}]))}</div>`+`<div class="grid2">${fld('Ámbito',fInput('ambito','','text',[{v:'',l:'—'},{v:'escuela',l:'Escuela'},{v:'domicilio',l:'Domicilio'},{v:'consultorio',l:'Consultorio'},{v:'virtual',l:'Virtual'}]))}${fld('Horas',fInput('horas','','number'))}</div>`+fld('Observación',fInput('observacion','','textarea'));}
+  else if(tipo==='conducta'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Tipo',fInput('tipo','','text',[{v:'positivo',l:'Positivo'},{v:'neutro',l:'Neutro'},{v:'negativo',l:'Negativo'}]))}</div>`+`<div class="grid2">${fld('Ámbito / contexto',fInput('contexto','Ej: aula, recreo'))}${fld('Intensidad',fInput('intensidad','','text',sel('leve','moderada','alta')))}</div>`+fld('Antecedente / disparador',fInput('antecedente','¿Qué pasó justo antes?','textarea'))+fld('Descripción de la conducta',fInput('descripcion','','textarea'))+fld('Intervención / estrategia aplicada',fInput('intervencion','','textarea'));}
+  else if(tipo==='objetivo'){const areas=[{v:'Comunicación',l:'Comunicación'},{v:'Lenguaje',l:'Lenguaje'},{v:'Conducta',l:'Conducta'},{v:'Autonomía',l:'Autonomía'},{v:'Social',l:'Social'},{v:'Académico',l:'Académico'},{v:'Emocional',l:'Emocional'},{v:'Otro',l:'Otro'}];body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Área',fInput('area','','text',areas))}${fld('Estado',fInput('estado','','text',[{v:'pendiente',l:'Pendiente'},{v:'en proceso',l:'En proceso'},{v:'logrado',l:'Logrado'}]))}</div>`+`<div class="grid2">${fld('Fecha de inicio',fInput('fecha','','date'))}${fld('Próxima revisión',fInput('fecha_revision','','date'))}</div>`+fld('Objetivo',fInput('objetivo','','textarea'))+fld('Criterio de logro',fInput('criterio','¿Cómo sabremos que se logró?'))+fld('Observaciones',fInput('obs','','textarea'));}
+  else if(tipo==='informe'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Categoría',fInput('categoria','','text',[{v:'Evaluación',l:'Evaluación'},{v:'Seguimiento',l:'Seguimiento'},{v:'Informe trimestral',l:'Informe trimestral'},{v:'Comunicación familia',l:'Comunicación familia'},{v:'Otro',l:'Otro'}]))}</div>`+fld('Nombre del documento',fInput('nombre'))+fld('Enlace al documento (URL)',fInput('enlace','https://…','url'))+fld('Autor / profesional',fInput('autor'));}
+  else if(tipo==='gasto'){body=fld('Paciente',fInput('paciente_id','','text',pacOpts()))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Monto ($)',fInput('monto','','number'))}</div>`+fld('Concepto',fInput('concepto'))+`<div class="grid2">${fld('Tipo',fInput('tipo','','text',[{v:'honorario',l:'Honorario'},{v:'material',l:'Material'},{v:'otro',l:'Otro'}]))}${fld('Estado de pago',fInput('estado_pago','','text',[{v:'pendiente',l:'Pendiente'},{v:'pagado',l:'Pagado'}]))}</div>`+fld('Medio de pago',fInput('medio','','text',[{v:'',l:'—'},{v:'Efectivo',l:'Efectivo'},{v:'Transferencia',l:'Transferencia'},{v:'Obra social',l:'Obra social'},{v:'Otro',l:'Otro'}]));}
+  else if(tipo==='evento'){const pe=[{v:'',l:'General'},...pacientes.map(p=>({v:p.id,l:p.nombre}))];body=fld('Paciente (opcional)',fInput('paciente_id','','text',pe))+`<div class="grid2">${fld('Fecha',fInput('fecha','','date'))}${fld('Hora',fInput('hora','','time'))}</div>`+`<div class="grid2">${fld('Título',fInput('titulo'))}${fld('Tipo',fInput('tipo','','text',[{v:'sesion',l:'Sesión'},{v:'reunion',l:'Reunión'},{v:'otro',l:'Otro'}]))}</div>`+fld('Lugar / modalidad',fInput('lugar'))+fld('Nota',fInput('nota','','textarea'));}
   document.getElementById('modal-box').innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
       <p class="pf" style="font-size:17px;font-weight:500;color:var(--navy)">${titles[tipo]}</p>
@@ -1192,14 +1475,14 @@ async function saveModal(tipo) {
   const tableMap={paciente:'pacientes',nota:'notas',asistencia:'asistencias',conducta:'conductas',objetivo:'objetivos',informe:'informes',gasto:'gastos',evento:'eventos'};
   const table=tableMap[tipo];
   let data={};
-  if(tipo==='paciente') data={nombre:gv('nombre'),edad:gv('edad')||null,institucion:gv('institucion'),diagnostico:gv('diagnostico'),contacto:gv('contacto')};
-  else if(tipo==='nota') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,materia:gv('materia'),nota:parseInt(gv('nota'))||null,obs:gv('obs')};
-  else if(tipo==='asistencia') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,estado:gv('estado')};
-  else if(tipo==='conducta') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,tipo:gv('tipo'),descripcion:gv('descripcion')};
-  else if(tipo==='objetivo') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,area:gv('area'),estado:gv('estado'),objetivo:gv('objetivo'),obs:gv('obs')};
-  else if(tipo==='informe') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,categoria:gv('categoria'),nombre:gv('nombre')};
-  else if(tipo==='gasto') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,concepto:gv('concepto'),monto:parseFloat(gv('monto'))||0,tipo:gv('tipo')};
-  else if(tipo==='evento') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,hora:gv('hora'),titulo:gv('titulo'),tipo:gv('tipo')};
+  if(tipo==='paciente') data={nombre:gv('nombre'),edad:gv('edad')||null,fecha_nacimiento:gv('fecha_nacimiento')||null,dni:gv('dni'),diagnostico:gv('diagnostico'),obra_social:gv('obra_social'),nro_afiliado:gv('nro_afiliado'),institucion:gv('institucion'),grado:gv('grado'),docente:gv('docente'),profesional_derivante:gv('profesional_derivante'),equipo:gv('equipo'),medicacion:gv('medicacion'),frecuencia:gv('frecuencia'),fecha_inicio:gv('fecha_inicio')||null,contacto:gv('contacto'),observaciones:gv('observaciones')};
+  else if(tipo==='nota') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,materia:gv('materia'),nota:parseInt(gv('nota'))||null,periodo:gv('periodo'),obs:gv('obs')};
+  else if(tipo==='asistencia') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,estado:gv('estado'),ambito:gv('ambito'),horas:parseFloat(gv('horas'))||null,observacion:gv('observacion')};
+  else if(tipo==='conducta') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,tipo:gv('tipo'),contexto:gv('contexto'),intensidad:gv('intensidad'),antecedente:gv('antecedente'),descripcion:gv('descripcion'),intervencion:gv('intervencion')};
+  else if(tipo==='objetivo') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,fecha_revision:gv('fecha_revision')||null,area:gv('area'),estado:gv('estado'),objetivo:gv('objetivo'),criterio:gv('criterio'),obs:gv('obs')};
+  else if(tipo==='informe') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,categoria:gv('categoria'),nombre:gv('nombre'),enlace:gv('enlace'),autor:gv('autor')};
+  else if(tipo==='gasto') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,concepto:gv('concepto'),monto:parseFloat(gv('monto'))||0,tipo:gv('tipo'),estado_pago:gv('estado_pago'),medio:gv('medio')};
+  else if(tipo==='evento') data={paciente_id:gv('paciente_id')||null,fecha:gv('fecha')||null,hora:gv('hora'),titulo:gv('titulo'),tipo:gv('tipo'),lugar:gv('lugar'),nota:gv('nota')};
   if(editItem) await dbUpdate(table,editItem.id,data);
   else await dbInsert(table,data);
   if(tipo==='paciente') pacientes=await dbGet('pacientes');
