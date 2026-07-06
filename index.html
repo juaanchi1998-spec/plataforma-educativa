@@ -24,10 +24,10 @@ body{font-family:'Inter',sans-serif;background:
   background-attachment:fixed;color:var(--navy);min-height:100vh;overflow-x:clip;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
 .pf{font-family:'Fustat','Inter',sans-serif}
 :root{
-  --navy:#25352E;--navy2:#33473D;--gold:#C2764F;--gold-light:#F3E5DA;--cream:#F4F6F1;
-  --sage:#5E9585;--sage-light:#E3EFEA;--warm:#E3B79A;--blush:#F1E6DD;
-  --muted:#576158;--faint:#6E7A70;
-  --primary:#2F6E5D;--primary-dark:#245646;--primary-soft:#E1EFE9;--accent:#C2764F;--teal:#5E9585;--surface:#FFFFFF;--surface-soft:#EDF2ED;
+  --navy:#2E2740;--navy2:#473873;--gold:#B06A8F;--gold-light:#EFE2EC;--cream:#F7F5FB;
+  --sage:#6E8BA8;--sage-light:#E7ECF2;--warm:#D6A0B8;--blush:#F1E4EE;
+  --muted:#5B5470;--faint:#837B99;
+  --primary:#5B4B8A;--primary-dark:#473873;--primary-soft:#EAE4F3;--accent:#B06A8F;--teal:#6E8BA8;--surface:#FFFFFF;--surface-soft:#F0EDF6;
 }
 body[data-theme="salvia"]{
   --navy:#22302A;--navy2:#2E4238;--gold:#B0895A;--gold-light:#EFE7D8;--cream:#F5F6F0;
@@ -36,10 +36,10 @@ body[data-theme="salvia"]{
   --primary:#3C6E52;--primary-dark:#2E5540;--primary-soft:#E2EDE5;--accent:#B0895A;--teal:#5A8C6E;--surface-soft:#EDF1EA;
 }
 body[data-theme="lavanda"]{
-  --navy:#2E2740;--navy2:#473873;--gold:#B06A8F;--gold-light:#EFE2EC;--cream:#F7F5FB;
-  --sage:#6E8BA8;--sage-light:#E7ECF2;--warm:#D6A0B8;--blush:#F1E4EE;
-  --muted:#5B5470;--faint:#837B99;
-  --primary:#5B4B8A;--primary-dark:#473873;--primary-soft:#EAE4F3;--accent:#B06A8F;--teal:#6E8BA8;--surface-soft:#F0EDF6;
+  --navy:#25352E;--navy2:#33473D;--gold:#C2764F;--gold-light:#F3E5DA;--cream:#F4F6F1;
+  --sage:#5E9585;--sage-light:#E3EFEA;--warm:#E3B79A;--blush:#F1E6DD;
+  --muted:#576158;--faint:#6E7A70;
+  --primary:#2F6E5D;--primary-dark:#245646;--primary-soft:#E1EFE9;--accent:#C2764F;--teal:#5E9585;--surface-soft:#EDF2ED;
 }
 body[data-theme="oceano"]{
   --navy:#173A3C;--navy2:#12484C;--gold:#C77A63;--gold-light:#F4E2DB;--cream:#F1F7F6;
@@ -586,9 +586,9 @@ document.querySelectorAll('.logo-box').forEach(b=>b.innerHTML=LOGO_SVG);
 
 // ---- Temas ----
 const THEMES = {
-  clasico: { label:'Eucalipto', a:'#2F6E5D', b:'#C2764F' },
+  clasico: { label:'Lavanda',   a:'#5B4B8A', b:'#B06A8F' },
   salvia:  { label:'Bosque',    a:'#3C6E52', b:'#B0895A' },
-  lavanda: { label:'Lavanda',   a:'#5B4B8A', b:'#B06A8F' },
+  lavanda: { label:'Eucalipto', a:'#2F6E5D', b:'#C2764F' },
   oceano:  { label:'Océano',    a:'#1D6E73', b:'#C77A63' }
 };
 function saveTheme(t){ try{ localStorage.setItem('at_theme', t); }catch(e){} }
