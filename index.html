@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 <meta name="apple-mobile-web-app-title" content="Plataforma A.T."/>
-<meta name="theme-color" content="#F4F6F1"/>
+<meta name="theme-color" content="#F7F5FB"/>
 <title>Plataforma Educativa · A.T. Priscila Ibazeta</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%231e3a5f'/><g fill='none' stroke='%23faf8f4' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5.5 14.8a6.5 6 0 0 0 13 0'/><path d='M12 15.5V7.6'/><path d='M12 12c0-2.7 1.9-4.6 4.7-4.8 .2 2.8-2 4.8-4.7 4.8z'/><path d='M12 13.4c0-2-1.5-3.5-3.7-3.7-.2 2.2 1.6 3.7 3.7 3.7z'/><circle cx='12' cy='6.3' r='1'/></g></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -598,6 +598,12 @@ function applyTheme(t){
   document.body.dataset.theme = t;
   saveTheme(t);
   document.querySelectorAll('.theme-dot').forEach(d=>d.classList.toggle('active', d.dataset.theme===t));
+  // que la barra de estado del iPhone use el mismo color de fondo del tema
+  try{
+    const cream=getComputedStyle(document.body).getPropertyValue('--cream').trim();
+    const m=document.querySelector('meta[name="theme-color"]');
+    if(m && cream) m.setAttribute('content', cream);
+  }catch(e){}
 }
 function renderThemeDots(container){
   if(!container) return;
